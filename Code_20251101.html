@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>如何使用滴滴打车</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #333;
+    }
+    .wrap {
+      height: 100%;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+    }
+    .page {
+      min-height: 100%;
+      height: auto;
+      background: #f7f8fa;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .content {
+      width: 100%;
+      max-width: 640px;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    h1 {
+      margin: 0 0 20px;
+      text-align: center;
+      color: #ff5500;
+      font-size: 24px;
+    }
+    h2 {
+      margin: 0 0 15px;
+      font-size: 20px;
+      color: #ff5500;
+    }
+    p {
+      margin: 0 0 15px;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-top: 10px;
+      display: block;
+    }
+    .tip {
+      background: #fff8e6;
+      border-left: 4px solid #ffc107;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #999;
+      font-size: 14px;
+    }
+    .indicator {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ccc;
+      transition: background 0.3s;
+    }
+    .dot.active {
+      background: #ff5500;
+    }
+    .down-arrow {
+      position: sticky;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      border: 2px solid #ff5500;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      animation: breathe 2s infinite ease-in-out;
+      margin-top: 20px;
+    }
+    .down-arrow::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-bottom: 2px solid #ff5500;
+      border-right: 2px solid #ff5500;
+      transform: rotate(45deg);
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="indicator" id="indicator">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+  <div class="wrap" id="wrap">
+    <div class="page">
+      <div class="content">
+        <h1>如何使用滴滴打车</h1>
+        <h2>1. 在微信中“我”中找到服务</h2>
+        <p>打开微信，点击右下角“我”，在个人页面找到并点击“服务”选项。</p>
+        <img src="https://raw.githubusercontent.com/wxy201516-prog/picture/main/1.jpg" alt="微信服务入口" />
+        <div class="down-arrow"></div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <h2>2. 在服务中找到交通出行中的滴滴打车</h2>
+        <p>进入“服务”页面后，在“交通出行”栏目中找到并点击“滴滴打车”。</p>
+        <img src="https://raw.githubusercontent.com/wxy201516-prog/picture/main/2.jpg" alt="滴滴打车入口" />
+        <div class="down-arrow"></div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <h2>3. 输入目的地</h2>
+        <p>在目的地输入框中输入你要去的地方，可以直接在地图上点选位置。</p>
+        <img src="https://raw.githubusercontent.com/wxy201516-prog/picture/main/3.jpg" alt="输入目的地" />
+        <div class="tip">小提示：尽量选择准确的上车点，方便司机快速找到你。</div>
+        <div class="down-arrow"></div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <h2>4. 选择车型并叫车</h2>
+        <p>根据需求选择快车、专车、拼车等，确认后点击“叫车”按钮。</p>
+        <img src="https://raw.githubusercontent.com/wxy201516-prog/picture/main/4.jpg" alt="选择车型" />
+        <div class="down-arrow"></div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <h2>5. 如选择拼车，请选择人数</h2>
+        <p>选择“拼车”后，系统会提示你选择同行人数，确认后继续叫车。</p>
+        <img src="https://raw.githubusercontent.com/wxy201516-prog/picture/main/6.jpg" alt="选择拼车人数" />
+        <div class="tip">小提示：拼车人数会影响匹配到的车辆类型和费用。</div>
+        <div class="down-arrow"></div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <h2>6. 等待并上车</h2>
+        <p>页面会显示司机位置和预计到达时间，上车后司机会确认行程。</p>
+        <img src="https://raw.githubusercontent.com/wxy201516-prog/picture/main/7.jpg" alt="等待上车" />
+        <div class="down-arrow"></div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <h2>7. 到达并支付</h2>
+        <p>到达目的地后，系统会自动计算费用，你可以用微信支付完成付款。</p>
+        <img src="https://raw.githubusercontent.com/wxy201516-prog/picture/main/8.jpg" alt="到达支付" />
+        <div class="tip">小提示：可以给司机评价，帮助提升服务质量。</div>
+        <div class="footer">© 2025 滴滴打车使用指南 H5</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const wrap = document.getElementById('wrap');
+    const dots = document.querySelectorAll('.dot');
+    const arrows = document.querySelectorAll('.down-arrow');
+
+    function updateIndicator() {
+      const pages = document.querySelectorAll('.page');
+      let pageIndex = 0;
+      const scrollTop = wrap.scrollTop;
+      pages.forEach((page, i) => {
+        if (page.offsetTop <= scrollTop + window.innerHeight / 2) {
+          pageIndex = i;
+        }
+      });
+      dots.forEach((dot, i) => {
+        if (i === pageIndex) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    }
+
+    wrap.addEventListener('scroll', updateIndicator);
+    window.addEventListener('load', updateIndicator);
+
+    arrows.forEach((arrow, index) => {
+      arrow.addEventListener('click', () => {
+        const pages = document.querySelectorAll('.page');
+        if (pages[index + 1]) {
+          pages[index + 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
